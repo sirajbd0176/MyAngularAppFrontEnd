@@ -1,0 +1,30 @@
+﻿<div data-ng-controller="courseCtrl">
+    <div>
+        <!--<a href="javascript:void(0)" data-ng-click="showNewEntry=true">Add New Student</a>-->
+    </div>
+    <div data-ng-show="showNewEntry">
+        <form ng-submit="save()">
+            <div> 
+                course name
+                <input type="text" data-ng-model="newCourse.CourseName" />
+            </div>
+            <div> 
+                Depart ID
+                <input type="text" data-ng-model="newCourse.DepId" />
+            </div>
+            <div> 
+                <input type="submit" />
+                <button ng-click="showNewEntry=false">Cancel</button>
+            </div>
+        </form>
+    </div>
+    <div>
+        <table>
+            <tr data-ng-repeat="cor in corService.courses">
+                <td>{{cor.Id}}</td>
+                <td>{{cor.CourseName}}</td>
+                <td>{{cor.DepId}}</td>
+            </tr>
+        </table>
+    </div>
+</div>

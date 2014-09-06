@@ -1,0 +1,5 @@
+c:\users\mamony\documents\visual studio 2012\Projects\MyAngularAppFrontEnd\MyAngularAppFrontEnd\bin\MyAngularAppFrontEnd.dll
+c:\users\mamony\documents\visual studio 2012\Projects\MyAngularAppFrontEnd\MyAngularAppFrontEnd\bin\MyAngularAppFrontEnd.pdb
+c:\users\mamony\documents\visual studio 2012\Projects\MyAngularAppFrontEnd\MyAngularAppFrontEnd\obj\Debug\MyAngularAppFrontEnd.csprojResolveAssemblyReference.cache
+c:\users\mamony\documents\visual studio 2012\Projects\MyAngularAppFrontEnd\MyAngularAppFrontEnd\obj\Debug\MyAngularAppFrontEnd.dll
+c:\users\mamony\documents\visual studio 2012\Projects\MyAngularAppFrontEnd\MyAngularAppFrontEnd\obj\Debug\MyAngularAppFrontEnd.pdb

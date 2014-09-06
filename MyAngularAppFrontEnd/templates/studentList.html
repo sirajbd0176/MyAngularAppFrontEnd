@@ -1,0 +1,35 @@
+﻿<div data-ng-controller="studentCtrl">
+    <div>
+        <a href="javascript:void(0)" data-ng-click="showNewEntry=true">Add New Student</a>
+    </div>
+    <div data-ng-show="showNewEntry">
+        <form name="newStudentForm" ng-submit="save()">
+            <div> 
+                Student Name
+                <input type="text" name="Name" data-ng-model="newStudent.Name" required ng-minlength="5" />                
+                <span data-ng-show="newStudentForm.Name.$error.required" style="color:red">Please enter a name</span>
+                <span data-ng-show="newStudentForm.Name.$error.minlength" style="color:red">Please enter a minimum 5 characters</span>
+            </div>
+            <div> 
+                Address
+                <input type="text" name="Address" data-ng-model="newStudent.Address" required/>
+                <span data-ng-show="newStudentForm.Address.$error.required" style="color:red">Please enter a address</span>
+            </div>
+            <div> 
+                <input type="submit" />
+                <button ng-click="showNewEntry=false">Cancel</button>
+            </div>
+        </form>
+    </div>
+    <div>
+        <table>
+            <tr data-ng-repeat="std in stdService.students">
+                <td><a href="javascript:void(0)" data-ng-click="setForUpdate(std)">Edit</a></td>
+                <td><a href="javascript:void(0)" data-ng-click="delete(std)">Delete</a></td>
+                <td>{{std.Id}}</td>
+                <td>{{std.Name}}</td>
+                <td>{{std.Address}}</td>
+            </tr>
+        </table>
+    </div>
+</div>
