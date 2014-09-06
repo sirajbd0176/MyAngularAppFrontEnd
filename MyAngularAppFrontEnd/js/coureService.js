@@ -19,36 +19,38 @@
             return deferred.promise;
         };
 
-        //var _saveStudent = function (student) {
-        //    var deferred = $q.defer();
+        var _saveCourse = function (courses) {
+            var deferred = $q.defer();
 
-        //    $http.post("mm,mhttp://localhost:1770/api/v1/student", student)
-        //      .then(function (result) {
-        //          _students.splice(0, 0, result.data);
-        //          deferred.resolve();
-        //      },
-        //      function () {
-        //          // Error
-        //          deferred.reject();
-        //      });
+            $http.post("http://localhost:1770/api/v1/course", courses)
+              .then(function (result) {
+                  _courses.splice(0, 0, result.data);
+                  deferred.resolve();
+              },
+              function () {
+                  // Error
+                  deferred.reject();
+              });
 
-        //    return deferred.promise;
-        //};
+            return deferred.promise;
+        };
 
-        //var _updateStudent = function (student) {
-        //    var deferred = $q.defer();
+        var _updateCourse = function (course) {
+            var deferred = $q.defer();
 
-        //    $http.put("ldcvshttp://localhost:1770/api/v1/student/" + student.Id, student)
-        //      .then(function (result) {
-        //          deferred.resolve();
-        //      },
-        //      function () {
-        //          // Error
-        //          deferred.reject();
-        //      });
+            $http.put("http://localhost:1770/api/v1/course/" + course.Id, course)
+              .then(function (result) {
+                  deferred.resolve();
+              },
+              function () {
+                  // Error
+                  deferred.reject();
+              });
 
-        //    return deferred.promise;
-        //};
+            return deferred.promise;
+        };
+
+
 
         //var _deleteStudent = function (student) {
         //    var deferred = $q.defer();
@@ -69,8 +71,8 @@
         return {
             courses: _courses,
             getCourses: _getCourses,
-            //saveStudent: _saveStudent,
-            //updateStudent: _updateStudent,
+            saveCourse: _saveCourse,
+            updateCourse: _updateCourse,
             //deleteStudent: _deleteStudent
         }
     }

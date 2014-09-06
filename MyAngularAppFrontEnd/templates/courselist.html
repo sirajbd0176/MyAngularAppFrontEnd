@@ -1,16 +1,16 @@
 ﻿<div data-ng-controller="courseCtrl">
     <div>
-        <!--<a href="javascript:void(0)" data-ng-click="showNewEntry=true">Add New Student</a>-->
+        <a href="javascript:void(0)" data-ng-click="showNewEntry=true">Add New Course</a>
     </div>
     <div data-ng-show="showNewEntry">
         <form ng-submit="save()">
             <div> 
                 course name
-                <input type="text" data-ng-model="newCourse.CourseName" />
+                <input type="text"  data-ng-model="newCourse.CourseName" />
             </div>
             <div> 
                 Depart ID
-                <input type="text" data-ng-model="newCourse.DepId" />
+                <input type="text" data-ng-model="newCourse.DepID" />
             </div>
             <div> 
                 <input type="submit" />
@@ -21,6 +21,8 @@
     <div>
         <table>
             <tr data-ng-repeat="cor in corService.courses">
+                <td><a href="javascript:void(0)" data-ng-click="setForUpdate(cor)">Edit</a></td>
+                <!--<td><a href="javascript:void(0)" data-ng-click="delete(cor)">Delete</a></td>-->
                 <td>{{cor.Id}}</td>
                 <td>{{cor.CourseName}}</td>
                 <td>{{cor.DepId}}</td>
