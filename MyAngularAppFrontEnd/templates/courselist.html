@@ -3,10 +3,12 @@
         <a href="javascript:void(0)" data-ng-click="showNewEntry=true">Add New Course</a>
     </div>
     <div data-ng-show="showNewEntry">
-        <form ng-submit="save()">
+        <form name="NewCourseForm" ng-submit="save()">
             <div> 
                 course name
-                <input type="text"  data-ng-model="newCourse.CourseName" />
+                <input name="coursename" type="text"  data-ng-model="newCourse.CourseName" required ng-minlength="5" />
+                <span data-ng-show="NewCourseForm.coursename.$error.required" style="color:red">Please enter a course name</span>
+                <span data-ng-show="NewCourseForm.coursename.$error.minlength" style="color:red">Please enter a minimum 5 characters</span>
             </div>
             <div> 
                 Depart ID
@@ -22,7 +24,7 @@
         <table>
             <tr data-ng-repeat="cor in corService.courses">
                 <td><a href="javascript:void(0)" data-ng-click="setForUpdate(cor)">Edit</a></td>
-                <!--<td><a href="javascript:void(0)" data-ng-click="delete(cor)">Delete</a></td>-->
+                <td><a href="javascript:void(0)" data-ng-click="delete(cor)">Delete</a></td>
                 <td>{{cor.Id}}</td>
                 <td>{{cor.CourseName}}</td>
                 <td>{{cor.DepId}}</td>

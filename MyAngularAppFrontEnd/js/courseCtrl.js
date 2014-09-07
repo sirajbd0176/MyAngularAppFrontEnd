@@ -10,15 +10,6 @@ app.controller('courseCtrl', function ($scope, courseService) {
 
     $scope.save = function (){
 
-        //courseService.saveCourse($scope.newCourse)
-        //.then(function () {
-        //    alert('Saved');
-        //},
-        //function () {
-        //    alert('Error');
-        //});
-
-    
         if ($scope.newCourse.Id > 0) { //for update
             courseService.updateCourse($scope.newCourse)
             .then(function () {
@@ -46,5 +37,14 @@ app.controller('courseCtrl', function ($scope, courseService) {
     }
 
 
-
+    
+    $scope.delete = function (cor) {
+        courseService.deleteCourse(cor)
+            .then(function () {
+                alert('Deleted');
+            },
+            function () {
+                alert('Error');
+            });
+    }
 });

@@ -52,28 +52,28 @@
 
 
 
-        //var _deleteStudent = function (student) {
-        //    var deferred = $q.defer();
+        var _deleteCourse = function (course) {
+          var deferred = $q.defer();
 
-        //    $http.delete("dasdhttp://localhost:1770/api/v1/student/" + student.Id)
-        //      .then(function (result) {
-        //          _.remove(_students, function (std) { return std.Id == student.Id; });
-        //          deferred.resolve();
-        //      },
-        //      function () {
-        //          // Error
-        //          deferred.reject();
-        //      });
+            $http.delete("http://localhost:1770/api/v1/course/" + course.Id)
+              .then(function (result) {
+                  _.remove(_courses, function (cor) { return cor.Id == course.Id; });
+                  deferred.resolve();
+              },
+              function () {
+                  // Error
+                  deferred.reject();
+              });
 
-        //    return deferred.promise;
-        //};
+            return deferred.promise;
+        };
 
         return {
             courses: _courses,
             getCourses: _getCourses,
             saveCourse: _saveCourse,
             updateCourse: _updateCourse,
-            //deleteStudent: _deleteStudent
+            deleteCourse: _deleteCourse
         }
     }
 ]);
