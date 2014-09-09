@@ -1,6 +1,7 @@
 ﻿'use strict'
 
-app.controller('studentCtrl', function ($scope, studentService) {
+app.controller('studentCtrl', function ($scope, $filter, studentService) {
+
     $scope.showNewEntry = false;
 
     $scope.stdService = studentService;
@@ -41,5 +42,15 @@ app.controller('studentCtrl', function ($scope, studentService) {
             function () {
                 alert('Error');
             });
+    }
+
+    $scope.MySearch = function () {
+        $scope.myResult = $filter('orderBy')($scope.stdService.students, $scope.search);
+       
+    }
+
+    $scope.NameSearch = function () {
+
+        $scope.Uppercase= $filter('uppercase')()
     }
 });

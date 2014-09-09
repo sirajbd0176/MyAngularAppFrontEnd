@@ -22,13 +22,56 @@
         </form>
     </div>
     <div>
+<!--        <input type="text" data-ng-model="search.Name" placeholder="Search...." />-->
+        <input type="text" data-ng-model="search.Name" placeholder="Search...." />
+    </div>
+    <div>
         <table>
-            <tr data-ng-repeat="std in stdService.students">
+          <tr>
+          <th><a href="" ng-click="reverse=false;order('Name', false)">Name</a>
+            (<a href="" ng-click="order('-Name',false)">^</a>)</th>
+          <th><a href="" ng-click="reverse=!reverse;order('Address', reverse)">Address</a></th>
+      
+    
+        </tr>
+
+            <tr data-ng-repeat="std in stdService.students | filter:search |orderBy:'Address':true">
+                <td><a href="javascript:void(0)" data-ng-click="setForUpdate(std)">Edit</a></td>
+                <td><a href="javascript:void(0)" data-ng-click="delete(std)">Delete</a></td>
+                <td>{{std.Id}}</td>
+                <td>{{std.Name | uppercase}}</td>
+                <td>{{std.Address}}</td>
+                <td>{{std.BirthDate | date:'MM/dd/yyyy'}}</td>                
+            </tr>
+        </table>
+    </div>
+    <div>
+        <button data-ng-click="MySearch()"> My Search</button>
+    </div>
+    <div>
+        <table>
+        <!-- <tr>
+    Order in HTML   <th><a href="" ng-click="predicate = 'Name'; reverse=false">Name</a>
+          (<a href="" ng-click="predicate = '-Name'; reverse=false">^</a>)</th>
+      <th><a href="" ng-click="predicate = 'Address'; reverse=!reverse">address</a></th
+     
+    </tr>-->
+            <!--  Order In HTML<tr data-ng-repeat="std in myResult | orderBy:predicate:reverse"">-->
+
+
+  
+
+
+
+
+                <tr data-ng-repeat="std in myResult ">
+
                 <td><a href="javascript:void(0)" data-ng-click="setForUpdate(std)">Edit</a></td>
                 <td><a href="javascript:void(0)" data-ng-click="delete(std)">Delete</a></td>
                 <td>{{std.Id}}</td>
                 <td>{{std.Name}}</td>
                 <td>{{std.Address}}</td>
+                <td>{{std.BirthDate | date:'MM/dd/yyyy'}}</td>                
             </tr>
         </table>
     </div>

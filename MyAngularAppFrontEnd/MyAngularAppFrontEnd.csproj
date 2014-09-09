@@ -76,10 +76,13 @@
     <Content Include="js\app.js" />
     <Content Include="js\coureService.js" />
     <Content Include="js\courseCtrl.js" />
+    <Content Include="js\deptCtrl.js" />
+    <Content Include="js\deptService.js" />
     <Content Include="js\indexCtrl.js" />
     <Content Include="js\studentCtrl.js" />
     <Content Include="js\studentService.js" />
     <Content Include="templates\courselist.html" />
+    <Content Include="templates\departmentList.html" />
     <Content Include="templates\indexView.html" />
     <Content Include="templates\studentList.html" />
     <Content Include="Web.config" />

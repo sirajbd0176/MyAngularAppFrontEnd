@@ -51,7 +51,7 @@
         };
 
         var _deleteStudent = function (student) {
-            var deferred = $q.defer();
+            var deferred = $q.defer(); 
 
             $http.delete("http://localhost:1770/api/v1/student/" + student.Id)
               .then(function (result) {

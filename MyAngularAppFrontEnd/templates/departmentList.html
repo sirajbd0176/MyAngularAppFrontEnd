@@ -1,0 +1,41 @@
+﻿<div data-ng-controller="departmentCtrl">
+
+        <div>
+        <a href="javascript:void(0)" data-ng-click="showNewEntry=true">Add New departmennt</a>
+    </div>
+    <div data-ng-show="showNewEntry">
+        <form name="newDepartmentForm" ng-submit="save()">
+            <div> 
+                Department Name
+                <input type="text" name="Name" data-ng-model="newDepartment.Name" required ng-minlength="3" />                
+                <span data-ng-show="newDepartmentForm.Name.$error.required" style="color:red">Please enter a name</span>
+                <span data-ng-show="newDepartmentForm.Name.$error.minlength" style="color:red">Please enter a minimum 3 characters</span>
+            </div>
+            <div> 
+                Location
+                <input type="text" name="Location" data-ng-model="newDepartment.Location" required/>
+                <span data-ng-show="newDepartmentForm.Location.$error.required" style="color:red">Please enter a address</span>
+            </div>
+            <div> 
+                <input type="submit" />
+                <button ng-click="showNewEntry=false">Cancel</button>
+            </div>
+        </form>
+    </div>
+
+
+
+
+        <div>
+        <table>
+            <tr data-ng-repeat="dep in depatService.departments">
+             <td><a href="javascript:void(0)" data-ng-click="setForUpdate(dep)">Edit</a></td>
+                <td><a href="javascript:void(0)" data-ng-click="delete(dep)">Delete</a></td>
+
+                <td>{{dep.Id}}</td>
+                <td>{{dep.Name}}</td>
+                <td>{{dep.Location}}</td>
+            </tr>
+        </table>
+    </div>
+    </div>

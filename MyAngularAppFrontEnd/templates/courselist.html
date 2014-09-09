@@ -6,7 +6,7 @@
         <form name="NewCourseForm" ng-submit="save()">
             <div> 
                 course name
-                <input name="coursename" type="text"  data-ng-model="newCourse.CourseName" required ng-minlength="5" />
+                <input name="coursename"id="txtcorseNa" type="text"  data-ng-model="newCourse.CourseName " required ng-minlength="5" />
                 <span data-ng-show="NewCourseForm.coursename.$error.required" style="color:red">Please enter a course name</span>
                 <span data-ng-show="NewCourseForm.coursename.$error.minlength" style="color:red">Please enter a minimum 5 characters</span>
             </div>
@@ -22,11 +22,14 @@
     </div>
     <div>
         <table>
-            <tr data-ng-repeat="cor in corService.courses">
+             
+    
+
+            <tr data-ng-repeat="cor in corService.courses|orderBy:'CourseName'| filter:newCourse.CourseName">
                 <td><a href="javascript:void(0)" data-ng-click="setForUpdate(cor)">Edit</a></td>
                 <td><a href="javascript:void(0)" data-ng-click="delete(cor)">Delete</a></td>
                 <td>{{cor.Id}}</td>
-                <td>{{cor.CourseName}}</td>
+                <td>{{cor.CourseName | uppercase }}</td>
                 <td>{{cor.DepId}}</td>
             </tr>
         </table>

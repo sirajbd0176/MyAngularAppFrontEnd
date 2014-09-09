@@ -1,17 +1,17 @@
 ﻿'use strict'
 
-app.controller('courseCtrl', function ($scope, courseService) {
+app.controller('departmentCtrl', function ($scope, departmentService) {
     $scope.showNewEntry = false;
 
     //$scope.newStudent = {Name:'',Address:''};
 
-    $scope.corService = courseService;
-    courseService.getCourses();
+    $scope.depatService = departmentService;
+    departmentService.getDepartment();
 
-    $scope.save = function (){
+    $scope.save = function () {
 
-        if ($scope.newCourse.Id > 0) { //for update
-            courseService.updateCourse($scope.newCourse)
+        if ($scope.newDepartment.Id > 0) { //for update
+            departmentService.updateDepartment($scope.newDepartment)
             .then(function () {
                 alert('Updated');
             },
@@ -20,13 +20,9 @@ app.controller('courseCtrl', function ($scope, courseService) {
             });
         }
         else { /// saving
-            courseService.saveCourse($scope.newCourse)
+            departmentService.saveDepartment($scope.newDepartment)
               .then(function () {
-               
                   alert('Saved');
-                  //document.getElementById('txtcorseNa').value = '';
-                 // location.reload();
-
               },
               function () {
                   alert('Error');
@@ -34,16 +30,15 @@ app.controller('courseCtrl', function ($scope, courseService) {
         }
     }
 
-
-    $scope.setForUpdate = function (cor) {
-        $scope.newCourse = cor;
+    $scope.setForUpdate = function (dep) {
+        $scope.newDepartment = dep;
         $scope.showNewEntry = true;
     }
 
 
-    
-    $scope.delete = function (cor) {
-        courseService.deleteCourse(cor)
+
+    $scope.delete = function (dep) {
+        departmentService.DeleteDepartment(dep)
             .then(function () {
                 alert('Deleted');
             },

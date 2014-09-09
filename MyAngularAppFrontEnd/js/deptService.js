@@ -1,16 +1,15 @@
-﻿app.factory('courseService', ['$http', '$q',
+﻿app.factory('departmentService', ['$http', '$q',
     function ($http, $q) {
 
-        var _courses = [];
+        var _departments = [];
 
-        var _getCourses = function () {
+        var _getDepartment = function () {
             var deferred = $q.defer();
 
-            $http.get("http://localhost:1770/api/v1/course")
+            $http.get("http://localhost:1770/api/v1/department")
               .then(function (result) {
-                  angular.copy(result.data, _courses);
+                  angular.copy(result.data, _departments);
                   deferred.resolve();
-                 
               },
               function () {
                   // Error
@@ -20,15 +19,13 @@
             return deferred.promise;
         };
 
-        var _saveCourse = function (courses) {
+        var _saveDepartment = function (department) {
             var deferred = $q.defer();
 
-            $http.post("http://localhost:1770/api/v1/course", courses)
+            $http.post("http://localhost:1770/api/v1/Department", department)
               .then(function (result) {
-                  _courses.splice(0, 0, result.data);
+                  _departments.splice(0, 0, result.data);
                   deferred.resolve();
-                 
-                 
               },
               function () {
                   // Error
@@ -38,10 +35,11 @@
             return deferred.promise;
         };
 
-        var _updateCourse = function (course) {
+
+        var _updateDepartment = function (deprtment) {
             var deferred = $q.defer();
 
-            $http.put("http://localhost:1770/api/v1/course/" + course.Id, course)
+            $http.put("http://localhost:1770/api/v1/Department/" + deprtment.Id, deprtment)
               .then(function (result) {
                   deferred.resolve();
               },
@@ -54,13 +52,14 @@
         };
 
 
+        var _DeleteDepartment = function (department)
+        {
 
-        var _deleteCourse = function (course) {
-          var deferred = $q.defer();
+            var deferred = $q.defer();
 
-            $http.delete("http://localhost:1770/api/v1/course/" + course.Id)
+            $http.delete("http://localhost:1040/api/v1/department/" + department.Id)
               .then(function (result) {
-                  _.remove(_courses, function (cor) { return cor.Id == course.Id; });
+                  _.remove(_departments, function (dep) { return dep.Id == department.Id; });
                   deferred.resolve();
               },
               function () {
@@ -69,14 +68,19 @@
               });
 
             return deferred.promise;
-        };
+
+
+        }
+
+
+
 
         return {
-            courses: _courses,
-            getCourses: _getCourses,
-            saveCourse: _saveCourse,
-            updateCourse: _updateCourse,
-            deleteCourse: _deleteCourse
+            departments: _departments,
+            getDepartment: _getDepartment,
+            saveDepartment: _saveDepartment,
+            updateDepartment: _updateDepartment,
+            DeleteDepartment: _DeleteDepartment
         }
     }
 ]);

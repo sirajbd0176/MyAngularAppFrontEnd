@@ -1,6 +1,8 @@
 ﻿/// <reference path="../templates/courselist.html" />
 /// <reference path="../templates/courselist.html" />
 /// <reference path="../templates/courselist.html" />
+/// <reference path="../templates/departList.html" />
+/// <reference path="../templates/departList.html" />
 'use strict'
 
 var app = angular.module('myApp', ['ngRoute']);
@@ -19,6 +21,11 @@ app.config(["$routeProvider", function ($routeProvider) {
     $routeProvider.when("/courses", {
         controller: "courseCtrl",
         templateUrl: "/templates/courselist.html"
+
+    });
+    $routeProvider.when("/departments", {
+        controller: "departmentCtrl",
+        templateUrl: "/templates/departmentList.html"
 
     });
 
