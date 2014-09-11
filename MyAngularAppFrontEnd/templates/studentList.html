@@ -15,6 +15,52 @@
                 <input type="text" name="Address" data-ng-model="newStudent.Address" required/>
                 <span data-ng-show="newStudentForm.Address.$error.required" style="color:red">Please enter a address</span>
             </div>
+
+            <div> 
+                Phone No.
+                <input type="text" name="Phone" data-ng-model="newStudent.Phone" required/>
+                <span data-ng-show="newStudentForm.Phone.$error.required" style="color:red">Please enter a Phone</span>
+            </div>
+            <div> 
+                Email.
+                <input type="text" name="Email" data-ng-model="newStudent.Email" required/>
+                <span data-ng-show="newStudentForm.Email.$error.required" style="color:red">Please enter a Email:</span>
+            </div>
+               <div> 
+             Session
+                <input type="text" name="Session" data-ng-model="newStudent.Session" required/>
+                <span data-ng-show="newStudentForm.Session.$error.required" style="color:red">Please enter a Session</span>
+            </div>
+
+             <div>
+                 Depart ID
+                <!--<input name="depatId"id="depatId" type="text" data-ng-model="newCourse.DepID" />-->
+                <select data-ng-model="newStudent.DepartmentId" >
+                    <option ng-repeat="dept in depService.departments" value="{{dept.Id}}">{{dept.Name}}</option>
+                </select>
+                 
+                  </div>
+           
+
+            <div>
+                <!--<input type="text" class="form-control" datepicker-popup="MM-dd-yyyy" ng-mdel="myDate" is-open="opened" max-date="'2015-06-22'" close-text="Close" />-->
+
+                
+        Birth Date
+        <span style="color:red" ng-show=".Birthdate.$error.pattern">(1 Jan 2013)</span>
+   
+    <input
+        type="date"
+        id="test"
+        name="Birthdate"
+        data-ng-model="newStudent.BirthDate"
+        popup="dd MM yyyy"
+        options="dateOptions"
+        opened="opened"
+        custom-datepicker/>
+
+            </div>
+
             <div> 
                 <input type="submit" />
                 <button ng-click="showNewEntry=false">Cancel</button>
@@ -41,7 +87,11 @@
                 <td>{{std.Id}}</td>
                 <td>{{std.Name | uppercase}}</td>
                 <td>{{std.Address}}</td>
-                <td>{{std.BirthDate | date:'MM/dd/yyyy'}}</td>                
+                <td>{{std.BirthDate | date:'MM/dd/yyyy'}}</td> 
+                <td>{{std.Phone}}</td>
+                <td>{{std.Email}}</td>
+                 <td>{{std.Session}}</td>
+                               
             </tr>
         </table>
     </div>

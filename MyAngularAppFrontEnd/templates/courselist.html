@@ -6,32 +6,54 @@
         <form name="NewCourseForm" ng-submit="save()">
             <div> 
                 course name
-                <input name="coursename"id="txtcorseNa" type="text"  data-ng-model="newCourse.CourseName " required ng-minlength="5" />
+                <input name="coursename" type="text"  data-ng-model="newCourse.CourseName" required ng-minlength="5" />
                 <span data-ng-show="NewCourseForm.coursename.$error.required" style="color:red">Please enter a course name</span>
                 <span data-ng-show="NewCourseForm.coursename.$error.minlength" style="color:red">Please enter a minimum 5 characters</span>
             </div>
             <div> 
                 Depart ID
-                <input type="text" data-ng-model="newCourse.DepID" />
+                <!--<input name="depatId" id="depatId" type="text" data-ng-model="newCourse.DepID" />-->
+                <select data-ng-model="newCourse.DepartmentId" >
+                    <option ng-repeat="dept in depService.departments" value="{{dept.Id}}">{{dept.Name}}</option>
+                </select>
+                 
+              <!--<span id='depatId'>{{newCourse.DepID | number}}</span><br>-->
+  <!--No fractions: <span>{{val | number:0}}</span><br>-->
             </div>
+
             <div> 
-                <input type="submit" />
+                <input class="btn btn-primary" type="submit" />
                 <button ng-click="showNewEntry=false">Cancel</button>
             </div>
         </form>
     </div>
     <div>
+        <div class="container">
         <table>
-             
-    
-
+ 
+      <div class="row">
             <tr data-ng-repeat="cor in corService.courses|orderBy:'CourseName'| filter:newCourse.CourseName">
                 <td><a href="javascript:void(0)" data-ng-click="setForUpdate(cor)">Edit</a></td>
                 <td><a href="javascript:void(0)" data-ng-click="delete(cor)">Delete</a></td>
-                <td>{{cor.Id}}</td>
-                <td>{{cor.CourseName | uppercase }}</td>
-                <td>{{cor.DepId}}</td>
+              <div class="col-md-2 col-sm-3 col-lg-3">  <td>{{cor.Id}}</td> </div>
+               <div class="col-md-2 col-sm-3 col-lg-3">  <td>{{cor.CourseName}}</td></div>
+                <!--<td>{{cor.CourseName==aaaaaaaa| iif:'OK':'Not Ok' }}</td>-->
+               <div class="col-md-2 col-sm-3 col-lg-3">  <td>{{cor.DepartmentId}}</td></div>
+               <div class="col-md-2 col-sm-3 col-lg-3">  <td>{{cor.Department.Name}}</td></div>
+                 
             </tr>
+             </div>
+               <!-- <tr data-ng-repeat="dept in depService.departments">
+                <td>{{dept.Name}}</td>
+                   </tr>-->
+            
+        
         </table>
+ </div>
+        
     </div>
+
+    
+   
+   
 </div>

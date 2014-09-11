@@ -1,12 +1,13 @@
 ﻿'use strict'
 
-app.controller('studentCtrl', function ($scope, $filter, studentService) {
+app.controller('studentCtrl', function ($scope, $filter, studentService, departmentService) {
 
     $scope.showNewEntry = false;
 
     $scope.stdService = studentService;
     studentService.getStudents();
-
+    $scope.depService = departmentService;
+    departmentService.getDepartment();
     $scope.save = function () {
         if ($scope.newStudent.Id > 0) { //for update
             studentService.updateStudent($scope.newStudent)
