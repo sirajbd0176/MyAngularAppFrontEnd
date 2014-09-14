@@ -9,6 +9,9 @@ app.controller('studentCtrl', function ($scope, $filter, studentService, departm
     $scope.depService = departmentService;
     departmentService.getDepartment();
     $scope.save = function () {
+        
+        //$scope.newStudent.BirthDate = moment($scope.newStudent.BirthDate).format('DD-MM-YYYY');
+        //$scope.newStudent.BirthDate = moment($scope.newStudent.BirthDate);
         if ($scope.newStudent.Id > 0) { //for update
             studentService.updateStudent($scope.newStudent)
             .then(function () {
@@ -54,4 +57,11 @@ app.controller('studentCtrl', function ($scope, $filter, studentService, departm
 
         $scope.Uppercase= $filter('uppercase')()
     }
+
+    $scope.open = function ($event) {
+        $event.preventDefault();
+        $event.stopPropagation();
+
+        $scope.opened = true;
+    };
 });
