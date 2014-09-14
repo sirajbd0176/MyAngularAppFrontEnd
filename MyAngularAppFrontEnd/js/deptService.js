@@ -9,7 +9,7 @@
             $http.get("http://localhost:1770/api/v1/department")
               .then(function (result) {
                   angular.copy(result.data, _departments);
-                  deferred.resolve();
+                  deferred.resolve(result);
               },
               function () {
                   // Error

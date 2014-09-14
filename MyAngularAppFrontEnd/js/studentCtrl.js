@@ -7,9 +7,35 @@ app.controller('studentCtrl', function ($scope, $filter, studentService, departm
     $scope.stdService = studentService;
     studentService.getStudents();
     $scope.depService = departmentService;
-    departmentService.getDepartment();
+
+    $scope.select2Options = {
+        allowClear: true,
+        multiple:true,
+        data: {}
+    };
+
+    departmentService.getDepartment()
+        .then(
+            function (result) {
+                var newDeptList = [];
+
+                _.forEach(result.data, function (dept) {
+                    newDeptList.push({ id: dept.Id, text: dept.Name });
+                });
+                $scope.select2Options.data.results = newDeptList;
+            },
+            function (err) {
+
+            }
+        );    
+
     $scope.save = function () {
         
+        //var Depts = [];
+        //_.forEach($scope.newStudent.DepID, function (dept) {
+        //    Depts.push({Id:dept.id,Name:dept.text});
+        //});
+        //$scope.newStudent.Depts = Depts;
         //$scope.newStudent.BirthDate = moment($scope.newStudent.BirthDate).format('DD-MM-YYYY');
         //$scope.newStudent.BirthDate = moment($scope.newStudent.BirthDate);
         if ($scope.newStudent.Id > 0) { //for update

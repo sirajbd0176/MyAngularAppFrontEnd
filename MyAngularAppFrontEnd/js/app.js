@@ -5,7 +5,7 @@
 /// <reference path="../templates/departList.html" />
 'use strict'
 
-var app = angular.module('myApp', ['ngRoute', 'ui.bootstrap']);
+var app = angular.module('myApp', ['ngRoute', 'ui.bootstrap', 'ui.select2']);
 
 app.config(["$routeProvider", function ($routeProvider) {
     $routeProvider.when("/", {

@@ -35,7 +35,15 @@
             <div>
                 Depart ID
                 <!--<input name="depatId"id="depatId" type="text" data-ng-model="newCourse.DepID" />-->
-                <select data-ng-model="newStudent.DepartmentId">
+                <!--<select data-ng-model="newStudent.DepartmentId">
+                    <option ng-repeat="dept in depService.departments" value="{{dept.Id}}">{{dept.Name}}</option>
+                </select>-->
+
+                <!--<div ui-select2="select2Options" ng-model="newStudent.DepID" data-placeholder="Pick a number" style="width:150px">                    
+                </div>-->
+
+                <select ui-select2 ng-model="newStudent.DepartmentId" data-placeholder="Pick a number">
+                    <option value=""></option>
                     <option ng-repeat="dept in depService.departments" value="{{dept.Id}}">{{dept.Name}}</option>
                 </select>
 
